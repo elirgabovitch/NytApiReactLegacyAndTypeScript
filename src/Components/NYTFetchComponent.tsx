@@ -2,7 +2,7 @@ import React from 'react'
 import DisplayArticles from './DisplayArticles'
 
 type Articles = {
-    result: any
+    result: any //use any when you don't know what type of object comes back
     searchItem: string
     startDate:  string 
     endDate: number | string
@@ -28,7 +28,7 @@ class NYT extends React.Component<{}, Articles> {
         let URL = `${baseUrl}?api-key=${apiKey}&page=${this.state.pageNumber}&q=${this.state.searchItem}`
 
         if(this.state.startDate !== '') {
-            console.log(this.state.startDate)
+            // console.log(this.state.startDate)
             URL += '&begin_date=' + this.state.startDate
         };
 
@@ -43,7 +43,6 @@ class NYT extends React.Component<{}, Articles> {
                 this.setState({
                     result: data.response.docs
                 });
-                console.log('ran #2')
             })
         
     }
